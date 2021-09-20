@@ -45,13 +45,14 @@ public class IndexServlet extends HttpServlet {
                               .setFirstResult(15 *(page - 1))
                               .setMaxResults(15)
                               .getResultList();
+
         long tasks_count = (long)em.createNamedQuery("getTasksCount", Long.class)
                 .getSingleResult();
 
         em.close();
 
         request.setAttribute("tasks", tasks);
-        request.setAttribute("tasks_count", tasks_count);     // 全件数
+        request.setAttribute("tasks_count", tasks_count);
         request.setAttribute("page", page);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/index.jsp");

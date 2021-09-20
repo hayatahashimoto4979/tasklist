@@ -35,7 +35,7 @@ public class EditServlet extends HttpServlet {
         // TODO Auto-generated method stub
         EntityManager em = DBUtil.createEntityManager();
 
-        Task m = em.find(Task.class, Integer.parseInt(request.getSession().getId()));
+        Task m = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
